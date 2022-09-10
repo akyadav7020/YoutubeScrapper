@@ -2,17 +2,39 @@
 
 {% block head %}
 
-<title>Search Page</title>
+<title>HOME</title>
+<script>
+    function SelectLink()
+    {
+        var d = document.getElementById("link");
+        var dtext = d.options[d.selectedIndex].value;
+        document.getElementById("content").value=dtext;
+    }
+</script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Search</h1>
+    <h1 style="text-align: center">SEARCH</h1>
 
     <div class="form">
         <form action="/review" method="POST">
-            <input type="text" name="content" id="content">
+            <label for = "link"> Select One Link :  </label>
+            <select id ="link" onclick="SelectLink();">
+                <option value = ""> Other </option>
+                <option value = "https://www.youtube.com/user/krishnaik06/videos"> Krish Naik </option>
+                <option value = "https://www.youtube.com/c/HiteshChoudharydotcom/videos"> Hitesh Choudhary </option>
+                <option value = "https://www.youtube.com/c/Telusko/videos"> Telusko </option>
+                <option value = "https://www.youtube.com/user/saurabhexponent1/videos"> MySirG.com </option>
+                <option value = "https://www.youtube.com/c/iNeuroniNtelligence/videos"> iNeuron Intelligence </option>
+            </select>
+            <br></br>
+            <input type="text" name="content" id="content" required placeholder="e.g https://www.youtube.com/c/Telusko/videos">
+            <br></br>
+            <label for = "num"> Enter Number :  </label>
+            <input type="number" name="num" id="num" required min="1" max="50"  placeholder="max 50">
+            <br></br>
             <input type="submit" value="Search">
         </form>
     </div>

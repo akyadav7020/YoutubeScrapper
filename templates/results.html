@@ -18,26 +18,28 @@
 <body>
 
   <div class="table-users">
-   <div class="header">Details</div>
+   <div class="header">Details Of Lattest {{n}} Uploaded Videos </div>
 
    <table cellspacing="0">
       <tr>
          <th>S.No</th>
           <th>VIDEO LINK</th>
+          <th>LIKES</th>
          <th>TITLE</th>
          <th>THUMBNAIL</th>
+          <th>VIEWS</th>
       </tr>
          {% for i in range(n) %}
       <tr>
           <td>{{i+1}}</td>
-          <td>{{details[i]['V_link']}}</td>
+          <td><a href = {{details[i]['V_link']}}>Watch</a></td>
+          <td>{{details[i]['Likes']}}</td>
           <td>{{details[i]['Title']}}</td>
-          <td>{{details[i]['thumbnail']}}</td>
+          <td><a href = {{details[i]['thumbnail']}}>Show</a></td>
+          <td>{{details[i]['Views']}}</td>
        {% endfor %}
    </table>
 </div>
-
-
 
 </body>
 
