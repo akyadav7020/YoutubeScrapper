@@ -1,5 +1,4 @@
 import time
-
 from bs4 import BeautifulSoup as bs
 from scroll_page import Scroll_Page
 import re
@@ -62,7 +61,7 @@ def Total_Likes(id):
         videoPIR =json_data['contents']['twoColumnWatchNextResults']['results']['results']['contents'][0]['videoPrimaryInfoRenderer']
         likes_label = videoPIR['videoActions']['menuRenderer']['topLevelButtons'][0]['toggleButtonRenderer']['defaultText']['accessibility']['accessibilityData']['label']
         likes_str = likes_label.split(' ')[0].replace(',','')
-        likes = 0 if likes_str in ['No','NO','No'] else likes_str
+        likes = 0 if likes_str.lower() =="no" else likes_str
         return int(likes)
     except Exception as e:
         return "NaN"
