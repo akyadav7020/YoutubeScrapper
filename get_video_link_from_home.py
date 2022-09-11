@@ -7,7 +7,8 @@ import json
 
 
 def get_id_of_videos(home_link,count):
-    l, i = 0, 1
+    l=0
+    i=1
     try:
         while l < count:
             html = Scroll_Page(home_link, i)

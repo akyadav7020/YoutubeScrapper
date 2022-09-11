@@ -4,6 +4,7 @@ from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
 import database
 import requests
+import test
 
 app = Flask(__name__)
 
@@ -22,7 +23,7 @@ def main():
         if request.method == 'POST':
             ch_link = request.form['content']
             count = int(request.form['num'])
-            video_id = vd.get_id_of_videos(ch_link,count)
+            video_id = test.get_id_of_videos(ch_link,count)
             """ if (len(video_id)) == 0:
                 return "Invalid Link Try again"
             details = []
