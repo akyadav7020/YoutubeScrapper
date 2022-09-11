@@ -1,10 +1,9 @@
 import get_video_link_from_home as vd
-from pro import youtubescraper
+import pro
 from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
 import database
 import requests
-import test
 
 app = Flask(__name__)
 
@@ -23,7 +22,7 @@ def main():
         if request.method == 'POST':
             ch_link = request.form['content']
             count = int(request.form['num'])
-            video_id = test.get_id_of_videos(ch_link)
+            video_id = pro.get_id_of_videos(ch_link)
             if (len(video_id)) == 0:
                 return "Invalid Link Try again"
             details = []
@@ -32,7 +31,7 @@ def main():
             table_name = ch_name.replace(" ","_")+"_{}".format(ch_url)
             database.create_unique_table(table_name)
             for i in range(count):
-                video_link,title, thumbnail_url = youtubescraper(video_id[i])
+                video_link,title, thumbnail_url = pro.youtubescraper(video_id[i])
                 views = vd.Total_Views(video_id[i])
                 total_likes = vd.Total_Likes((video_id[i]))
                 mydict = {"V_link":video_link,"Likes":total_likes,"Title":title,"thumbnail":thumbnail_url,"Views":views}
