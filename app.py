@@ -22,7 +22,7 @@ def main():
         if request.method == 'POST':
             ch_link = request.form['content']
             count = int(request.form['num'])
-            video_id = vd.get_id_of_videos(ch_link,count)
+            """ video_id = vd.get_id_of_videos(ch_link,count)
             if (len(video_id)) == 0:
                 return "Invalid Link Try again"
             details = []
@@ -36,7 +36,8 @@ def main():
                 mydict = {"V_link":video_link,"Likes":total_likes,"Title":title,"thumbnail":thumbnail_url,"Views":views}
                 details.append(mydict)
                 database.insert_unique_data("video_link",table_name,mydict)
-        return render_template('results.html',details=details[0:(len(details))],n =len(details),name=ch_name)
+        return render_template('results.html',details=details[0:(len(details))],n =len(details),name=ch_name) """
+        return render_template('results.html',ch_link=ch_link,count=count,n=1)
 
     except Exception as e:
         return "Try Again"

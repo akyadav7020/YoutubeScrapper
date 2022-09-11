@@ -29,11 +29,8 @@
          {% for i in range(n) %}
       <tr>
           <td>{{i+1}}</td>
-          <td><a href = {{details[i]['V_link']}} style="text-decoration:none">Watch</a></td>
-          <td>{{details[i]['Likes']}}</td>
-          <td>{{details[i]['Title']}}</td>
-          <td><a href = {{details[i]['thumbnail']}} style="text-decoration:none">Show</a></td>
-          <td>{{details[i]['Views']}}</td>
+          <td> {{ch_link}}</td>
+          <td> {{count}}</td>
        {% endfor %}
    </table>
 </div>
