@@ -22,17 +22,17 @@ def main():
         if request.method == 'POST':
             ch_link = request.form['content']
             count = int(request.form['num'])
-            #video_id = pro.get_id_of_videos(ch_link)
-            video_id = vd.get_id_of_videos(ch_link,count)
+            video_id = pro.get_id_of_videos(ch_link)
+            #video_id = vd.get_id_of_videos(ch_link,count)
             if (len(video_id)) == 0:
                 return "Invalid Link Try again"
             details = []
-            #count = len(video_id) if len(video_id) < count else count
+            count = len(video_id) if len(video_id) < count else count
             ch_name,ch_url = vd.title_of_channel(ch_link)
             table_name = ch_name.replace(" ","_")+"_{}".format(ch_url)
             database.create_unique_table(table_name)
-            #for i in range(count):
-            for i in range(len(video_id)):
+            for i in range(count):
+            #for i in range(len(video_id)):
                 video_link,title, thumbnail_url = pro.youtubescraper(video_id[i])
                 views = vd.Total_Views(video_id[i])
                 total_likes = vd.Total_Likes((video_id[i]))
