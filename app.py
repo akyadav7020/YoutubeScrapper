@@ -23,9 +23,8 @@ def main():
             ch_link = request.form['content']
             count = int(request.form['num'])
             video_id = vd.get_id_of_videos(ch_link,count)
-
-            """if (len(video_id)) == 0:
-                return "Invalid Link Try again" """
+            if (len(video_id)) == 0:
+                return "Invalid Link Try again"
             details = []
             ch_name,ch_url = vd.title_of_channel(ch_link)
             table_name = ch_name.replace(" ","_")+"_{}".format(ch_url)
