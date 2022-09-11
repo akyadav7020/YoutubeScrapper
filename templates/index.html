@@ -15,10 +15,10 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
+<div class="content" align="center">
     <h1 style="text-align: center">SEARCH</h1>
 
-    <div class="form">
+    <div class="form" >
         <form action="/review" method="POST">
             <label for = "link"> Select One Link :  </label>
             <select id ="link" onclick="SelectLink();">
@@ -30,7 +30,7 @@
                 <option value = "https://www.youtube.com/c/iNeuroniNtelligence/videos"> iNeuron Intelligence </option>
             </select>
             <br></br>
-            <input type="text" name="content" id="content" required placeholder="e.g https://www.youtube.com/c/Telusko/videos">
+            <input type="text"  name="content" id="content" required placeholder="e.g https://www.youtube.com/c/Telusko/videos">
             <br></br>
             <label for = "num"> Enter Number :  </label>
             <input type="number" name="num" id="num" required min="1" max="50"  placeholder="max 50">
