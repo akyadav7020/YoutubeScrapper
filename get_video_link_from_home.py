@@ -1,3 +1,5 @@
+import time
+
 from bs4 import BeautifulSoup as bs
 from scroll_page import Scroll_Page
 import re
@@ -10,6 +12,7 @@ def get_id_of_videos(home_link,count):
     try:
         while l < count:
             html = Scroll_Page(home_link, i)
+            time.sleep(20)
             v = re.findall(r"watch\?v=(\S{11})", html)
             res =[]
             [res.append(x) for x in v if x not in res]
