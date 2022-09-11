@@ -9,7 +9,7 @@ def Scroll_Page(link,i):
         option.headless = True
         driver = webdriver.Chrome(service=Service(r'chromedriver.exe'), options=option)
         driver.get(link)
-        time.sleep(2)
+        time.sleep(3)
         for k in range(i):
             x = 2000 * k + 1
             driver.execute_script("window.scrollBy(0,{})".format(x), "")

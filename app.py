@@ -22,7 +22,6 @@ def main():
         if request.method == 'POST':
             ch_link = request.form['content']
             count = int(request.form['num'])
-            print(ch_link,count)
             video_id = vd.get_id_of_videos(ch_link,count)
 
             if (len(video_id)) == 0:
