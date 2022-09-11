@@ -1,7 +1,7 @@
 import re
 from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen as uReq
-def get_id_of_videos(home_link,count):
+def get_id_of_videos(home_link):
     try:
         html = uReq(home_link)
         html_result = html.read().decode()
