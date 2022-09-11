@@ -26,7 +26,8 @@ def main():
             if (len(video_id)) == 0:
                 return "Invalid Link Try again"
             details = []
-            table_name = vd.title_of_channel(ch_link)
+            ch_name,ch_url = vd.title_of_channel(ch_link)
+            table_name = ch_name.replace(" ","_")+"_{}".format(ch_url)
             database.create_unique_table(table_name)
             for i in range(len(video_id)):
                 video_link,title, thumbnail_url = youtubescraper(video_id[i])
@@ -35,7 +36,7 @@ def main():
                 mydict = {"V_link":video_link,"Likes":total_likes,"Title":title,"thumbnail":thumbnail_url,"Views":views}
                 details.append(mydict)
                 database.insert_unique_data("video_link",table_name,mydict)
-        return render_template('results.html',details=details[0:(len(details))],n =len(details))
+        return render_template('results.html',details=details[0:(len(details))],n =len(details),name=ch_name)
 
     except Exception as e:
         return "Try Again"

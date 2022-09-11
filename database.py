@@ -36,6 +36,16 @@ def create_unique_table(input_table_name):
     except Exception as e:
         return "Not able to connect to the SERVER"
 
+def Update_Data(primary_column,table,data):
+    try:
+        mydb = pyodbc.connect('DRIVER={SQL Server};''SERVER=mydb708.database.windows.net;''DATABASE=my_DB1;''UID=root708;''PWD=root@123')
+        cursor = mydb.cursor()
+        cursor.execute("update {} set likes = {}, views={} where {} = '{}'".format(table,data['Likes'],data['Views'],primary_column,data['V_link']))
+        mydb.commit()
+
+    except Exception as e:
+        return "Not able to connect to the SERVER"
+
 def drop_table(table_name):
     try:
         mydb = pyodbc.connect('DRIVER={SQL Server};''SERVER=mydb708.database.windows.net;''DATABASE=my_DB1;''UID=root708;''PWD=root@123')
@@ -56,13 +66,24 @@ def drop_table(table_name):
     except Exception as e:
         return "Not able to connect to the SERVER"
 
-
-def Update_Data(primary_column,table,data):
+def drop_all():
     try:
         mydb = pyodbc.connect('DRIVER={SQL Server};''SERVER=mydb708.database.windows.net;''DATABASE=my_DB1;''UID=root708;''PWD=root@123')
         cursor = mydb.cursor()
-        cursor.execute("update {} set likes = {}, views={} where {} = '{}'".format(table,data['Likes'],data['Views'],primary_column,data['V_link']))
-        mydb.commit()
+        cursor.execute("select table_name from information_schema.tables")
+        all_tables_name = (cursor.fetchall())
+        all_tables_list = []
+        for i in range(len(all_tables_name)):
+            all_tables_list.append(all_tables_name[i][0])
+        if len(all_tables_list) >1:
+            for table_name in all_tables_list[:-1]:
+                print(table_name)
+                cursor.execute("drop table {}".format(table_name))
+                mydb.commit()
+            print ("Deleted Successfully")
+        else:
+            print("No table to Delete")
 
     except Exception as e:
         return "Not able to connect to the SERVER"
+
