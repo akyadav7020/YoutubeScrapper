@@ -7,6 +7,7 @@ import json
 
 
 def get_id_of_videos(home_link,count):
+    """ returns list of Videoe_ids equal to less than given count value for a particulal channel link"""
     l=0
     i=1
     try:
@@ -30,6 +31,7 @@ def get_id_of_videos(home_link,count):
         return "Something Wrong"
 
 def title_of_channel(home_link):
+    """ returns channene name and unique channel_url_id for a particulal channel link"""
     try:
         html = requests.get(home_link)
         html_result = bs(html.text, "html.parser")
@@ -43,6 +45,7 @@ def title_of_channel(home_link):
         return "Something Wrong"
 
 def Total_Views(id):
+    """ returns Total Views on a particular Video"""
     try:
         link = link = "https://www.youtube.com/watch?v="+id
         html = requests.get(link)

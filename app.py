@@ -38,7 +38,6 @@ def main():
                 details.append(mydict)
                 database.insert_unique_data("video_link",table_name,mydict)
         return render_template('results.html',details=details[0:count],n =count,name=ch_name)
-        #return render_template('results.html',ch_link=ch_link,count=count,video=video_id,n=1)
 
     except Exception as e:
         return "Try Again"
