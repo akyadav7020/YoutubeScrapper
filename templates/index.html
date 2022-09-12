@@ -16,7 +16,7 @@
 
 {% block body %}
 <div class="content" align="center"> <br>
-    <div align="right"> <button> <a href = "https://github.com/akyadav7020/YoutubeBasicDetails" style="text-decoration:none"> PROJECT </a></button>
+    <div align="right"> <button> <a href = "https://github.com/akyadav7020/YoutubeScrapper" style="text-decoration:none"> PROJECT </a></button>
     &nbsp &nbsp <button> <a href = "https://www.linkedin.com/in/akyadav7020/" style="text-decoration:none"> Follow Me </a></button></div>
     <h1 style="text-align: center">Extract Basic Details</h1>
 
@@ -35,7 +35,7 @@
             <input type="text"  name="content" id="content" required placeholder="e.g https://www.youtube.com/c/Telusko/videos">
             <br></br>
             <label for = "num"> Enter Number :  </label>
-            <input type="number" name="num" id="num" required min="1" max="10"  placeholder="max 10">
+            <input type="number" name="num" id="num" required min="1" max="50"  placeholder="max 50">
             <br></br>
             <input type="submit" value="EXTRACT">
         </form>
@@ -50,7 +50,8 @@
          &nbsp 3. Check in database(Azure-SQL) and create unique table for channel(channel_name_url) if not present. <br>
          &nbsp 4. Extract Video_link and Total_likes,title,thumbnail_url,Total_Views for each Video_link.<br>
          &nbsp 5. Check Channel table and insert above details for each Video_Id if not present, if present then Update Total_likes & Views.<br>
-            &nbsp 6. Returned latest extracted details and database details to show on next page.<br><br></tr> </table>
+            &nbsp 6. Returned latest extracted details and database details to show on next page.<br>
+             &nbsp 7. It will take longer time to show result if n is larger. <br><br></tr> </table>
     </div>
 
 {% endblock %}
