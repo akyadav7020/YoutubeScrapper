@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Review Page</title>
+  <title>Extract Page</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -13,10 +13,11 @@
 </head>
 
 <body>
-
+<br>
+<div align="center"> <button> <a href = '/' style="text-decoration:none">  HOME </a> </button></div><br>
   <div class="table-users">
-      <div align = "center"> <a href = "https://github.com/akyadav7020/YoutubeBasicDetails" style="text-decoration:none"> <button> PROJECT </a></div>
-   <div class="header">Lattest {{n}} Uploaded Videos On {{name}}</div>
+
+      <div class="header">Latest {{n}} Uploaded Videos By {{name}}</div>
 
    <table cellspacing="0">
       <tr>
@@ -30,14 +31,38 @@
          {% for i in range(n) %}
       <tr>
           <td>{{i+1}}</td>
-          <td><a href = {{details[i]['V_link']}} style="text-decoration:none">Watch</a></td>
-          <td>{{details[i]['Likes']}}</td>
-          <td>{{details[i]['Title']}}</td>
-          <td><a href = {{details[i]['thumbnail']}} style="text-decoration:none">Show</a></td>
-          <td>{{details[i]['Views']}}</td>
+          <td><a href = {{details[0][i]['V_link']}} style="text-decoration:none">Watch</a></td>
+          <td>{{details[0][i]['Likes']}}</td>
+          <td>{{details[0][i]['Title']}}</td>
+          <td><a href = {{details[0][i]['thumbnail']}} style="text-decoration:none">Show</a></td>
+          <td>{{details[0][i]['Views']}}</td>
+      </tr>
        {% endfor %}
    </table>
 </div>
+
+<div class="table-users">
+    <div class="header">DataBase Detail</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>S.No</th>
+          <th>Table Name</th>
+          <th>Number Of Records</th>
+
+      </tr>
+         {% for i in range(count) %}
+      <tr>
+          <td>{{i+1}}</td>
+          <td>{{details[1][i]['Ch_table']}}</td>
+          <td>{{details[1][i]['records']}}</td>
+      </tr>
+       {% endfor %}
+   </table>
+</div>
+<br>
+<div align="center"><p><b>Try in local if want more than 10 results in 1 click, same database will be updated.</b></p>
+    <button> <a href = "https://github.com/akyadav7020/YoutubeScrapper" style="text-decoration:none"> LocalScrapper </a></button> </div>
 
 </body>
 

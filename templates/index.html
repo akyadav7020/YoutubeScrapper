@@ -15,13 +15,14 @@
 {% endblock %}
 
 {% block body %}
-<div class="content" align="center">
-    <h1 style="text-align: center">Search Basic Details</h1>
-    <div align="right"> <a href = "https://github.com/akyadav7020/YoutubeBasicDetails" style="text-decoration:none"> <button> PROJECT </a></div>
+<div class="content" align="center"> <br>
+    <div align="right"> <button> <a href = "https://github.com/akyadav7020/YoutubeBasicDetails" style="text-decoration:none"> PROJECT </a></button>
+    &nbsp &nbsp <button> <a href = "https://www.linkedin.com/in/akyadav7020/" style="text-decoration:none"> Follow Me </a></button></div>
+    <h1 style="text-align: center">Extract Basic Details</h1>
 
     <div class="form" >
-        <form action="/review" method="POST">
-            <label for = "link"> Select One Link :  </label>
+        <form action="/extract" method="POST">
+            <label for = "link"> <b> </b> Select / Paste Videos Section Link </b> </label> <br><br>
             <select id ="link" onclick="SelectLink();">
                 <option value = ""> Other </option>
                 <option value = "https://www.youtube.com/user/krishnaik06/videos"> Krish Naik </option>
@@ -36,8 +37,20 @@
             <label for = "num"> Enter Number :  </label>
             <input type="number" name="num" id="num" required min="1" max="10"  placeholder="max 10">
             <br></br>
-            <input type="submit" value="Search">
+            <input type="submit" value="EXTRACT">
         </form>
     </div>
-</div>
+    </div>
+<br> <br> <br>
+    <div class="table-users">
+        <p align="center"> <b> Work Flow :- </b> </p>
+        <table cellspacing="0">
+            <tr> &nbsp 1. Get Video link & number(n). <br>
+         &nbsp 2. Extract n video_ids using link, if correct link then extract channel name & unique url.<br>
+         &nbsp 3. Check in database(Azure-SQL) and create unique table for channel(channel_name_url) if not present. <br>
+         &nbsp 4. Extract Video_link and Total_likes,title,thumbnail_url,Total_Views for each Video_link.<br>
+         &nbsp 5. Check Channel table and insert above details for each Video_Id if not present, if present then Update Total_likes & Views.<br>
+            &nbsp 6. Returned latest extracted details and database details to show on next page.<br><br></tr> </table>
+    </div>
+
 {% endblock %}
