@@ -13,7 +13,7 @@ def Scroll_Page(link,i):
     try:
         option = Options()
         option.headless = True
-        driver = webdriver.Chrome(service=Service(r'chromedriver.exe'), options=option)
+        driver = webdriver.Chrome(r'chromedriver.exe', options=option)
         driver.get(link)
         time.sleep(5)
         for k in range(i):
