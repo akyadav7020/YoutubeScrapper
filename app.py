@@ -43,7 +43,7 @@ def main():
             data2 = database.Extract_data()
             details.append(data2)
 
-        return render_template('results.html',details=details[0:len(details)],n =len(data1),count=len(data2),name=ch_name)
+        return render_template('results.html',details=details[0:len(details)],n =len(video_id),count=len(data2),name=ch_name)
 
     except Exception as e:
         return e
