@@ -23,7 +23,10 @@ def main():
             ch_link = request.form['content']
             count = int(request.form['num'])
             details = []
-            video_id = vd.get_id_of_videos(ch_link,count)
+            ch_name="Abhay"
+            data1=[{"V_link":"a","Likes":100,"Title":"title1","thumbnail":"thumbnail_url1","Views":500},
+                   {"V_link":"b","Likes":200,"Title":"title2","thumbnail":"thumbnail_url2","Views":100}]
+            """video_id = vd.get_id_of_videos(ch_link,count)
             if (len(video_id)) == 0:
                 return "Invalid Link Try again"
             data1 = []
@@ -36,7 +39,7 @@ def main():
                 total_likes = vd.Total_Likes((video_id[i]))
                 mydict = {"V_link":video_link,"Likes":total_likes,"Title":title,"thumbnail":thumbnail_url,"Views":views}
                 data1.append(mydict)
-                database.insert_unique_data("video_link",table_name,mydict)
+                database.insert_unique_data("video_link",table_name,mydict)"""
             details.append(data1)
             data2 = database.Extract_data()
             details.append(data2)
@@ -44,11 +47,12 @@ def main():
         return render_template('results.html',details=details[0:len(details)],n =len(data1),count=len(data2),name=ch_name)
 
     except Exception as e:
-        return "Try again"
+        return e
 
 
 if __name__ == "__main__":
-    app.run(debug=True )
+    app.run()
+    #app.run(debug=True )
 
 
 
