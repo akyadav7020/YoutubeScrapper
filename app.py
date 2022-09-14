@@ -23,6 +23,7 @@ def main():
             ch_link = request.form['content']
             count = int(request.form['num'])
             details = []
+
             video_id = vd.get_id_of_videos(ch_link,count)
             if (len(video_id)) == 0:
                 return "Invalid Link Try again"
@@ -41,14 +42,15 @@ def main():
             data2 = database.Extract_data()
             details.append(data2)
 
-        return render_template('results.html',details=details[0:len(details)],n =len(data1),count=len(data2),name=ch_name)
+        return render_template('results.html',details=details[0:len(data1)],n =len(video_id),count=len(data2),name=ch_name)
 
     except Exception as e:
-        return "Try again"
+        return e
 
 
 if __name__ == "__main__":
-    app.run(debug=True )
+    app.run()
+    #app.run(port=8000, host='0.0.0.0')
 
 
 
